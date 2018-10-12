@@ -132,11 +132,11 @@
 	<span class="donate-cancel iconfont icon-cancel"></span>
 
 	<div class="donate-img-box">
-		<img id="donate-qr-wechat" class="noLazyLoad donate-img" src="/images/donate1.png" alt="No Donate Image!">	
-		<img id="donate-qr-alipay" class="noLazyLoad donate-img" src="/images/donate2.png" alt="No Donate Image!">	
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img" src="/images/wechat.png" alt="No Donate Image!">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img" src="/images/avatar.png" alt="No Donate Image!">	
 	</div>
 
-	<span class="donate-word">世界美好 你也是</span>
+	<span class="donate-word"></span>
 
 	<div class="donate-list">
 		<span class="iconfont icon-donate-wechat"></span>
@@ -194,6 +194,15 @@
 
 <nav class="post-footer-nav">
   
+    <div class="post-footer-link">
+      <a href="/2018/10/12/个人博客部署秘籍/" id="post-nav-newer" class="post-nav-link-wrap">
+        <strong class="post-nav-caption">newer</strong>
+           
+          <a class="post-nav-title" href="/2018/10/12/个人博客部署秘籍/">
+          Hexo个人博客部署秘籍</a>
+      </a>
+    </div>
+  
   
     <div class="post-footer-link">
       <a href="/2018/10/12/Vue-Router基础/" id="post-nav-older" class="post-nav-link-wrap">
@@ -209,29 +218,32 @@
 	
 
 
-    
-    <div id="disqus_thread"></div>
+    <div id="comment">   
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
 
     <script>
-    (function() { 
-    var d = document, s = d.createElement('script');
-    s.src = 'https://'+'lemonreds'+'.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());    
-    (d.head || d.body).appendChild(s);
-    })();
+        new Valine({
+        el: '#comment',
+        notify:false, 
+        verify:false, 
+        app_id: '7kxu60nBeUEAJKLWktcgg0mz-9Nh9j0Va',
+        app_key: 'N40K3DuKj3WpLWwPJSbmuRyC',  
+        path:window.location.pathname, 
+        avatar:'mm' ,
+        guest_info:['nick','mail']
+        });
     </script>
-
-    <noscript>Please enable JavaScript to view the  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-    </noscript>
-
-
 	
 </article>
 
 	<div class="toc-container">
 			<div class="toc-sidebar">
 			<p class="toc-title">
-				CONTENT
+				目錄
 			</p>
 			<div class="toc-list">
 				<ol class="toc-inner"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#Git-基本命令"><span class="toc-inner-text">Git 基本命令</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#Pull-Request"><span class="toc-inner-text">Pull Request</span></a></li></ol>
@@ -269,25 +281,25 @@
          
             
 
-            <a class="mobile-menu-link" href="/">首页
+            <a class="mobile-menu-link" href="/">首頁
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/archives">归档
+            <a class="mobile-menu-link" href="/archives">歸檔
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/tags">标签
+            <a class="mobile-menu-link" href="/tags">標籤
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/about">关于
+            <a class="mobile-menu-link" href="/about">關於
             </a>
             
          

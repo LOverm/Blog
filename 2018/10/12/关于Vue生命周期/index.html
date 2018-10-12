@@ -92,7 +92,7 @@
 	
 		<i class="iconfont icon-words"></i>
 		<span>
-			1137
+			1125
 		</span>
 	
 </div>
@@ -105,8 +105,7 @@
 		
 
 			
-					<h1 id="Vue生命周期"><a href="#Vue生命周期" class="headerlink" title="Vue生命周期"></a>Vue生命周期</h1><p>#Vue</p>
-<h3 id="vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用："><a href="#vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用：" class="headerlink" title="vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用："></a>vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用：</h3><ul>
+					<h3 id="vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用："><a href="#vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用：" class="headerlink" title="vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用："></a>vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用：</h3><ul>
 <li>beforeCreate</li>
 <li>created</li>
 <li>beforeMount</li>
@@ -154,11 +153,11 @@
 	<span class="donate-cancel iconfont icon-cancel"></span>
 
 	<div class="donate-img-box">
-		<img id="donate-qr-wechat" class="noLazyLoad donate-img" src="/images/donate1.png" alt="No Donate Image!">	
-		<img id="donate-qr-alipay" class="noLazyLoad donate-img lazyload" src="/images/placeholder.png" alt="No Donate Image!" data-src="/images/donate2.png">	
+		<img id="donate-qr-wechat" class="noLazyLoad donate-img" src="/images/wechat.png" alt="No Donate Image!">	
+		<img id="donate-qr-alipay" class="noLazyLoad donate-img lazyload" src="/images/placeholder.png" alt="No Donate Image!" data-src="/images/avatar.png">	
 	</div>
 
-	<span class="donate-word">世界美好 你也是</span>
+	<span class="donate-word"></span>
 
 	<div class="donate-list">
 		<span class="iconfont icon-donate-wechat"></span>
@@ -231,32 +230,35 @@
 	
 
 
-    
-    <div id="disqus_thread"></div>
+    <div id="comment">   
+    </div>
+
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
+    <script src="//unpkg.com/valine@v1.1.8-beta/dist/Valine.min.js"></script>
 
     <script>
-    (function() { 
-    var d = document, s = d.createElement('script');
-    s.src = 'https://'+'lemonreds'+'.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());    
-    (d.head || d.body).appendChild(s);
-    })();
+        new Valine({
+        el: '#comment',
+        notify:false, 
+        verify:false, 
+        app_id: '7kxu60nBeUEAJKLWktcgg0mz-9Nh9j0Va',
+        app_key: 'N40K3DuKj3WpLWwPJSbmuRyC',  
+        path:window.location.pathname, 
+        avatar:'mm' ,
+        guest_info:['nick','mail']
+        });
     </script>
-
-    <noscript>Please enable JavaScript to view the  <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-    </noscript>
-
-
 	
 </article>
 
 	<div class="toc-container">
 			<div class="toc-sidebar">
 			<p class="toc-title">
-				CONTENT
+				目錄
 			</p>
 			<div class="toc-list">
-				<ol class="toc-inner"><li class="toc-inner-item toc-inner-level-1"><a class="toc-inner-link" href="#Vue生命周期"><span class="toc-inner-text">Vue生命周期</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用："><span class="toc-inner-text">vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用：</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#1、在beforeCreate和created钩子函数之间的生命周期"><span class="toc-inner-text">1、在beforeCreate和created钩子函数之间的生命周期</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#2、created钩子函数和beforeMount间的生命周期"><span class="toc-inner-text">2、created钩子函数和beforeMount间的生命周期</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#3、beforeMount和mounted-钩子函数间的生命周期"><span class="toc-inner-text">3、beforeMount和mounted 钩子函数间的生命周期</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#4、mounted"><span class="toc-inner-text">4、mounted</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#5、beforeUpdate钩子函数和updated钩子函数间的生命周期"><span class="toc-inner-text">5、beforeUpdate钩子函数和updated钩子函数间的生命周期</span></a></li></ol></li></ol>
+				<ol class="toc-inner"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用："><span class="toc-inner-text">vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用：</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#1、在beforeCreate和created钩子函数之间的生命周期"><span class="toc-inner-text">1、在beforeCreate和created钩子函数之间的生命周期</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#2、created钩子函数和beforeMount间的生命周期"><span class="toc-inner-text">2、created钩子函数和beforeMount间的生命周期</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#3、beforeMount和mounted-钩子函数间的生命周期"><span class="toc-inner-text">3、beforeMount和mounted 钩子函数间的生命周期</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#4、mounted"><span class="toc-inner-text">4、mounted</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#5、beforeUpdate钩子函数和updated钩子函数间的生命周期"><span class="toc-inner-text">5、beforeUpdate钩子函数和updated钩子函数间的生命周期</span></a></li></ol>
 			</div>
 		</div>
 	</div>
@@ -291,25 +293,25 @@
          
             
 
-            <a class="mobile-menu-link" href="/">首页
+            <a class="mobile-menu-link" href="/">首頁
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/archives">归档
+            <a class="mobile-menu-link" href="/archives">歸檔
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/tags">标签
+            <a class="mobile-menu-link" href="/tags">標籤
             </a>
             
          
             
 
-            <a class="mobile-menu-link" href="/about">关于
+            <a class="mobile-menu-link" href="/about">關於
             </a>
             
          
