@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[Unix/Linux系统基础]]></title>
-    <url>%2Fhexo%2F2018%2F12%2F25%2Fcjq3vrrpf00021t6p34wxkhac%2F</url>
+    <url>%2Fhexo%2F2018%2F12%2F25%2Fcjq3vsmi200052q6panpiwf60%2F</url>
     <content type="text"><![CDATA[一、Unix 操作系统基础1、shellshell 是内核与用户之间的接口，是一个交互的命令解释器 2、unix 目录组织 在 unix 中，一切都是文件，文件组织成目录，目录是一种组织和控制文件访问的很好的方式，用户可以为目录设置权限以允许其他人访问的文件或只允许自己访问 文件类型：1、普通文件2、目录文件3、字符设备文件4、块设备文件 二、Unix 基本命令\$提示符是 bourne shell、korn shell、posix shell 的标准提示符%提示符通常是 c shell 的提示符“#”提示符一般是为系统管理员保留的用分号分割一行中两个命令 1、几种命令 man命令用来查看帮助手册man 4 passwd用来查看 passwd 的手册的第四节的内容 who命令报告有哪些用户已经登陆系统，每一个用户连接的终端和登陆时间的信息。who am i报告本用户的用户名和端口信息。whoami命令报告系统与本地终端关联的用户吗 write命令向当前登陆到同一个系统的用户的终端发送信息并显示，实现了通过终端的交互对话。 echo命令用于向屏幕上打印信息~双引号~ ：可引用除了字符\$、`、\外的任意字符或字符串~单引号~ ：shell 会忽略任何引用值，即屏蔽单引号内的特殊字符的原本含义。~反引号~ ：shell 认为反引号中的内容是一个系统命令 date命令可以用来显示或设定系统的日期与时间，在显示方面，使用者可以设定欲显示的格式，格式设定为一个加号后接数个标记 12date +%Y%m%d20184012/23/18 passwd命令为你的账户设置密码 uname查看当前系统的版本号 2、命令语法 通配符“?”表示任意单个字符“*”表示任何字符“[]”表示括号中的任意一个字符 重定向字符标准输入： &lt;标准输出： &gt;标准错误输出：2&gt; 命令行选项用一个破折线定义命令的不同形式 管道符“|” 完成两程序的连接，例如ps -ef | more 后台处理将任务放在后台处理，例如 “&amp;” 3、文件系统目录文件通常是数据的容器，而目录是文件或者其他目录的容器。 /opt 这个目录会用来存放应用程序和产品 /usr/bin 包含的基础的 unix 系统操作和文件处理的命令 /usr/lib 包含应用程序使用的文档和共享的库 /usr/local/bin 存放本地开发的程序的工具（/usr/contrib/bin 存放公用的） /etc 系统配置文件 /stand/vmunix 存放系统内核文件 /tmp 通常作为操作系统的一个临时空间 /dev 存放可以被连接到系统硬件设备的文件，通常被叫做“设备文件” 4、文件权限drwxr-xr-x第一位 l 软连接 d 目录 b 块文件 c 字符 -都不是 ；后 9 位每三位分别是 user、group、other 的权限：read、write、execute 5、文件系统命令 pwd 查看当前目录 ls 查看目录下文件名（ll 会显示详细信息）-a 显示所有文件-d 列出文件描述-l 每一个文件描述属性的长列表-F 在每个目录后面加反斜杠/，在可执行文件后面加星号*-R 递归地列出给出的目录和所有子目录中的文件 cd 进入目录 find 找到文件 mkdir 创建目录 rmdir 删除目录 more 一次一屏的显示 cp 复制文件 cp file1 fiel2-i 会在复制时向你确认是否覆盖旧文件-r 选项可复制目录-p 复制时保留权限 mv 移动或者给文件重命名 touch 创建新文件touch 命令有以下选项：-a time 更改存取(Access)时间为指定的时间-m time 更改修改(Modify)时间为指定的时间-t time 使用指定时间(time)来代替当前时间。-c 如果文件不存在，不创建新文件。 find 路径 -name 文件名 6、用户和用户组管理有关用户账号的文件： passwd 文件：每一个合法用户的账号对应该文件中的一行记录（登陆名：密码：用户标志号：组标志号：用户的全名或其他描述：主目录：登陆 shell） shadow 文件： /etc/shadow 文件存放用户账户的加密密码信息和密码的有效期。 group 文件：/etc/group 存放系统中的所有组（组名：密码：组标志号：用户列表） 使用 useradd 和 groupadd 命令来添加用户和组；修改组属性：groupmod [-g &lt;新 GID&gt; [-o]][-n &lt;新组名&gt;] &lt;现有组名&gt;]]></content>
       <tags>
         <tag>Unix</tag>
@@ -10,7 +10,7 @@
   </entry>
   <entry>
     <title><![CDATA[聊一聊JavaWeb项目后端和前端的交互]]></title>
-    <url>%2Fhexo%2F2018%2F11%2F27%2Fcjq3vrrpv000e1t6pu0tfho84%2F</url>
+    <url>%2Fhexo%2F2018%2F11%2F27%2Fcjq3vsmi9000c2q6p5za4ef1j%2F</url>
     <content type="text"><![CDATA[最近在做学校老师的一个钢管租赁网站的项目，我负责前端的开发。再加上期中考试和各种各样的作业博客也是好久没有更新了（=·=好吧其实是我懒）言归正传，这也算是我第一次参加正式的开发项目，前前后后改了不少次，但确实是学到了很多东西，这和自己平时在网上看看博客写写demo完全是不一样的。这个项目的后台是很早就已经开发得差不多了的。项目采取前后端代码分离的架构，即前端是完全的html格式文件，并非jsp模版文件，数据渲染一律采用ajax方式请求后端获取。今天就来聊一聊JavaWeb项目后端和前端的交互问题，一是增强记忆，二来最近身边的同学也在学习JavaWeb的开发（好像都很懵逼的样子，其实我也只了解一些皮毛） 后端Controller的编写现在jave web后端的主流框架为SSM（Spring SpringMVC Mybatis）或者是SpringBoot + Mybatis。它们都是以MVC为基础的框架，在前后端代码分离的项目中，编写Controller层简单粗暴的说就是设计接口以便前端调用。下面是一段SpringBoot中Controller层的代码：1234567891011121314@Controller@RequestMapping(&quot;/api&quot;)public class DemoController &#123; @RequestMapping(value=“/getinfo”,method=RequestMethod.GET) @ResponseBody private Map&lt;String,Object&gt; getInfo()&#123; Map&lt;String,Object&gt; modelMap = new HashMap&lt;String,Object&gt;(); ... ... ... (调用service层的接口） return modelMap; &#125;&#125; 这就是一个可以通过get方式请求的接口，运行项目，访问http://localhost:8080/projectname/api/getinfo 便可以获取json格式的数据。如果是post方式的请求，那么将代码@RequestMapping(value=“/getinfo”,method=RequestMethod.GET)中的GET改为POST，并使getInfo方法接收一个参数HttpServletRequest request ，然后在方法内处理请求体获取需要的数据便可（具体处理在这里不详述） 前端ajax调用接口这里便不仔细解释了，给出get与post两种方式的ajax请求模版（使用jquery）具体的参数大家可以自行谷歌了解。GET方式：1234$.getJSON(initUrl, function(data) &#123; ... ... &#125;); POST方式：12345678910111213141516$.ajax(&#123; url : Url, type : ‘POST’, data : formData, contentType : false, processData : false, cache : false, success : function(data) &#123; if (data.success) &#123; $.toast(‘提交成功！’); &#125; else &#123; $.toast(‘提交失败！’ + data.errMsg); console.log(data.errMsg); &#125; &#125;&#125;);]]></content>
       <tags>
         <tag>Java Web</tag>
@@ -18,7 +18,7 @@
   </entry>
   <entry>
     <title><![CDATA[当你在地址栏输入了一行网址……]]></title>
-    <url>%2Fhexo%2F2018%2F10%2F16%2Fcjq3vrrpr000c1t6p5h2y42jz%2F</url>
+    <url>%2Fhexo%2F2018%2F10%2F16%2Fcjq3vsmic000e2q6pfg3qv200%2F</url>
     <content type="text"><![CDATA[当你在浏览器的地址栏输入了一行网址，并回车了之后，浏览器到底做了什么呢？ 先笼统的讲一下：浏览器通过 DNS 解析你输入的网址（ URL ）根据网址中的域名（Domain）部分也就是www.xxxxx.com获取域名对应的IP地址，然后通过基于 TCP/IP 协议的 http 协议发送请求到服务器，服务器响应请求返回数据，浏览器接收数据解析并 渲染 到页面。 我们总结出几个关键词： DNS解析 URL TCP/IP HTTP协议 HTTP请求发起和响应 页面渲染的过程 DNS解析DNS:Domain Name Server，域名服务器。是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。DNS中保存了一张域名(domain name)和与之相对应的IP地址 (IP address)的表，以解析消息的域名。IP地址其实就是一串乱七八糟的数据用户很难记住，但是域名就不一样了，比如谷歌的google.com，百度的baidu.com 简单易记。所以为了处理这个问题，就需要用域名去映射IP地址。因此，当用户在浏览器输入https://www.baidu.com 回车时，它经历了以下步骤： 1.浏览器根据地址去本身缓存中查找dns解析记录，如果有，则直接返回IP地址，否则浏览器会查找操作系统中（hosts文件）是否有该域名的dns解析记录，如果有则返回。2.如果浏览器缓存和操作系统hosts中均无该域名的dns解析记录，或者已经过期，此时就会向域名服务器发起请求来解析这个域名。3.请求会先到LDNS（本地域名服务器），让它来尝试解析这个域名，如果LDNS也解析不了，则直接到根域名解析器请求解析4.根域名服务器给LDNS返回一个所查询余的主域名服务器（gTLDServer）地址。5.此时LDNS再向上一步返回的gTLD服务器发起解析请求。6.gTLD服务器接收到解析请求后查找并返回此域名对应的Name Server域名服务器的地址，这个Name Server通常就是你注册的域名服务器（比如阿里dns、腾讯dns等）7.Name Server域名服务器会查询存储的域名和IP的映射关系表，正常情况下都根据域名得到目标IP记录，连同一个TTL值返回给DNS Server域名服务器8.返回该域名对应的IP和TTL值，Local DNS Server会缓存这个域名和IP的对应关系，缓存的时间有TTL值控制。9.把解析的结果返回给用户，用户根据TTL值缓存在本地系统缓存中，域名解析过程结束。 URLURL：Uniform Resource Locator 统一资源定位符。说白了就是网络上用来标识具体资源的一个地址，包含了用户查找该资源的信息，HTTP使用它来传输数据和建立连接。一个URL有以下组成部分： 1. 协议 2. 服务器地址（域名或IP+端口） 3. 路径 4. 文件名 TCP/IP协议TCP：Transmission Control Protocol， 传输控制协议，是一种面向连接的、可靠的、基于字节流的传输层通信协议。双方建立TCP连接需要经历三次握手： 1.客户端发送syn包(syn=j)到服务器，并进入SYN_SEND状态，等待服务器确认。2.服务器收到syn包，必须确认客户的SYN（ack=j+1），同时自己也发送一个SYN包（syn=k），即SYN+ACK包，此时服务器进入SYN_RECV状态。3.客户端收到服务器的SYN＋ACK包，向服务器发送确认包ACK(ack=k+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。 上面几个状态码的解释： 1.SYN:synchronous 建立联机2.ACK:acknowledgement 确认3.SYN_SENT:请求连接4.SYN_RECV:服务端被动打开后,接收到了客户端的SYN并且发送了ACK时的状态。再进一步接收到客户端的ACK就进入ESTABLISHED状态。TCP连接时并不携带数据 HTTP协议HTTP协议：Hypertext Transfer Protocol 也叫超文本传送协议 ，它是一种基于TCP/IP协议栈、在表示层和应用层上的协议（TCP在传输层的协议），通俗一点说就是TCP/IP是位于传输层上的一种协议，用于在网络中传输数据；HTTP协议是应用层协议，基于TCP协议，用于包装数据，程序使用它进行通信，可以简单高效的处理通信中数据的传输和识别处理。]]></content>
       <tags>
         <tag>计算机网络</tag>
@@ -26,7 +26,7 @@
   </entry>
   <entry>
     <title><![CDATA[CSS布局笔记]]></title>
-    <url>%2Fhexo%2F2018%2F10%2F16%2Fcjq3vrrp800001t6pw27kka2d%2F</url>
+    <url>%2Fhexo%2F2018%2F10%2F16%2Fcjq3vsmhn00002q6pe936m8ku%2F</url>
     <content type="text"><![CDATA[一、盒模型 ie盒模型算上border、padding及自身（不算margin），标准的只算上自身窗体的大小 css设置方法如下：1234/* 标准模型 */box-sizing:content-box; /*IE模型*/box-sizing:border-box; margin、border、padding、content由外到里 最常用的获得宽高的方式dom.offsetWidth/offsetHeight 各种获得宽高的方式 获取屏幕的高度和宽度（屏幕分辨率）：window.screen.height/width 获取屏幕工作区域的高度和宽度（去掉状态栏）window.screen.availHeight/availWidth 网页全文的高度和宽度：document.body.scrollHeight/Width 滚动条卷上去的高度和向右卷的宽度：document.body.scrollTop/scrollLeft 网页可见区域的高度和宽度（不加边线）：document.body.clientHeight/clientWidth 网页可见区域的高度和宽度（加边线）：document.body.offsetHeight/offsetWidth二、居中方式 水平居中内联元素：inline, 内联块inline-block, 内联表inline-table, inline-flex元素及img,span,button等text-align:center;不定宽块元素居中：margin:0 auto;//且需要设置父级宽度通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left: -50% 来实现水平居中。 123456789.wrap&#123; float:left; position:relative; left:50%; clear:both;&#125;.wrap-center&#123; left:-50%;&#125; 垂直居中单行内联(inline-)元素垂直居中 通过设置内联元素的高度(height)和行高(line-height)相等，从而使元素垂直居中。 12height: 120px;line-height: 120px; 利用表布局12345678.father &#123; display: table;&#125;.children &#123; display: table-cell; vertical-align: middle; text-align: center; &#125; flex布局12345.center-flex &#123; display: flex; flex-direction: column;//上下排列 justify-content: center;&#125; 绝对布局方式已知高度123456789.parent &#123; position: relative;&#125;.child &#123; position: absolute; top: 50%; height: 100px; margin-top: -50px; &#125; 未知高度12345678.parent &#123; position: relative;&#125;.child &#123; position: absolute; top: 50%; transform: translateY(-50%);&#125; 垂直水平居中flex方式12345.parent &#123; display: flex; justify-content: center; align-items: center;&#125; grid方式1234567.parent &#123; height: 140px; display: grid;&#125;.child &#123; margin: auto;&#125;]]></content>
       <tags>
         <tag>CSS</tag>
@@ -34,7 +34,7 @@
   </entry>
   <entry>
     <title><![CDATA[Hexo个人博客部署秘籍]]></title>
-    <url>%2Fhexo%2F2018%2F10%2F12%2Fcjq3vrrpn00081t6p20pq1oge%2F</url>
+    <url>%2Fhexo%2F2018%2F10%2F12%2Fcjq3vsmi500082q6pvapco3fj%2F</url>
     <content type="text"><![CDATA[摘要Hexo 是用 Node.js 开发的一个静态站点生成器（Static Site Generator），支持 Markdown 语法写作，有着强大的插件系统，而且性能优异。本文将记录如何将hexo在本地搭建的博客部署到阿里云的Ubuntu16.04服务器上。（通过云服务器上的私有 Git 仓库部署到 Web 服务器目录下） 服务端配置在云服务器上安装 Git 和 Nginx 两个必备的软件包。Git 用于版本管理和部署，Nginx 用于静态博客托管。12sudo apt-get updatesudo apt-get install git nginx Git 配置在 /var/repo/ 下，创建一个名为 hexo_static 的裸仓库（bare repo）。如果没有 /var/repo 目录，需要先创建；然后修改目录的所有权和用户权限，之后 ubuntu 用户都具备/var/repo 目录下所有新生成的目录和文件的权限。123sudo mkdir /var/repo/sudo chown -R $USER:$USER /var/repo/sudo chmod -R 755 /var/repo/ 初始化git仓库12cd /var/repo/git init --bare hexo_static.git 配置 Nginx 托管文件目录接下来，创建 /var/www/hexo 目录，用于 Nginx 托管，并修改权限。123sudo mkdir -p /var/www/hexosudo chown -R $USER:$USER /var/www/hexosudo chmod -R 755 /var/www/hexo 修改 Nginx 的 default 设置：1sudo vim /etc/nginx/sites-available/default 将其中的 root 指令指向 /var/www/hexo 目录123456789... server &#123; listen 80 default_server; listen [::]:80 default_server ipv6only=on; root /var/www/hexo; # 需要修改的部分 index index.html index.htm;... 保存并退出文件。如果以后购买并备案域名之后，可以再将配置中的 default_server 修改为你的域名。最后，重启 Nginx 服务，使得改动生效。 创建Git钩子接下来，在服务器上的裸仓库 hexo_static 创建一个钩子，在满足特定条件时将静态 HTML 文件传送到 Web 服务器的目录下，即 /var/www/hexo。在自动生成的 hooks 目录下创建一个新的钩子文件：1vim /var/repo/hexo_static.git/hooks/post-receive 在该文件中添加两行代码，指定 Git 的工作树（源代码）和 Git 目录（配置文件等）。12#!/bin/bashgit --work-tree=/var/www/hexo --git-dir=/var/repo/hexo_static.git checkout -f 保存并退出文件，并让该文件变为可执行文件。1chmod +x /var/repo/hexo_static.git/hooks/post-receive 当当当！！！到这里服务器的配置就完成啦！ 下面来配置_config.yml中的deploy选项 deploy配置首先修改URL为自己的域名或者公网ip地址，比如我的就是www.jinminrui.cn然后修改deploy1234deploy: type: git repo: root@47.100.221.250（云服务器的IP地址）:/var/repo/hexo_static branch: master 最后！一键部署到位！hexo generate &amp;&amp; hexo deploy]]></content>
       <tags>
         <tag>Hexo</tag>
@@ -42,7 +42,7 @@
   </entry>
   <entry>
     <title><![CDATA[Git学习笔记]]></title>
-    <url>%2Fhexo%2F2018%2F10%2F12%2Fcjq3vrrpk00051t6p8c08susz%2F</url>
+    <url>%2Fhexo%2F2018%2F10%2F12%2Fcjq3vsmhx00022q6p4cazbml5%2F</url>
     <content type="text"><![CDATA[#git#subversion——集中型版本管理系统git——分散型版本管理系统 Git 基本命令1、git init —— 初始化仓库2、git status —— 查看仓库状态3、git add —— 向暂存区中添加文件4、git commit —— 保存仓库的历史记录5、git log——查看提交日志6、git diff——查看更改前后的差别7、git checkout -b [name] —— 以当前master分支创建新的分支 Pull RequestPull Request 是自己修改源代码后，请求对方仓库采纳该修改时采取的一种行为。]]></content>
       <tags>
         <tag>Git</tag>
@@ -50,7 +50,7 @@
   </entry>
   <entry>
     <title><![CDATA[Vue-Router基础]]></title>
-    <url>%2Fhexo%2F2018%2F10%2F12%2Fcjq3vrrpm00071t6p4bstf3p3%2F</url>
+    <url>%2Fhexo%2F2018%2F10%2F12%2Fcjq3vsmi400072q6p021hl43u%2F</url>
     <content type="text"><![CDATA[Vue-Router路由中有三个基本的概念 route, routes, router。 1、 route，它是一条路由，由这个英文单词也可以看出来，它是单数， Home按钮 =&gt; home内容， 这是一条route, about按钮 =&gt; about 内容， 这是另一条路由。 2、 routes 是一组路由，把上面的每一条路由组合起来，形成一个数组。[{home 按钮 =&gt;home内容 }， { about按钮 =&gt; about 内容}] 3、router 是一个机制，相当于一个管理者，它来管理路由。因为routes 只是定义了一组路由，它放在哪里是静止的，当真正来了请求，怎么办？ 就是当用户点击home 按钮的时候，怎么办？这时router 就起作用了，它到routes 中去查找，去找到对应的 home 内容，所以页面中就显示了 home 内容。 4、客户端中的路由，实际上就是dom 元素的显示和隐藏。当页面中显示home 内容的时候，about 中的内容全部隐藏，反之也是一样。客户端路由有两种实现方式：基于hash 和基于html5 history api. vue-router中，首先在routes数组中定义所需要的route。 然后创建router 对路由进行管理，它是由构造函数 new vueRouter() 创建，接受routes 参数 最后将router 实例注入到 vue 根实例中,就可以使用路由了 执行过程：当用户点击 router-link 标签时，会去寻找它的 to 属性， 它的 to 属性和 js 中配置的路径{ path: ‘/home’, component: Home} path 一一对应，从而找到了匹配的组件， 最后把组件渲染到 标签所在的地方。所有的这些实现才是基于hash 实现的。 编程式导航：这主要应用到按钮点击上。当点击按钮的时候，跳转另一个组件, 这只能用代码，调用rourter.push() 方法。 当们把router 注入到根实例中后，组件中通过 this.$router 可以获取到router, 所以在组件中使用this.$router.push(&quot;home”)就可以跳转到home界面]]></content>
       <tags>
         <tag>Vue.js</tag>
@@ -58,7 +58,7 @@
   </entry>
   <entry>
     <title><![CDATA[关于Vue生命周期]]></title>
-    <url>%2Fhexo%2F2018%2F10%2F12%2Fcjq3vrrpp000b1t6pg3ubg5od%2F</url>
+    <url>%2Fhexo%2F2018%2F10%2F12%2Fcjq3vsmi7000b2q6p0yy76ykp%2F</url>
     <content type="text"><![CDATA[vue提供了如下的钩子函数供我们在vue生命周期的不同时刻调用： beforeCreate created beforeMount mounted beforeUpdate updated beforeDestroy destroyed 1、在beforeCreate和created钩子函数之间的生命周期在这个生命周期之间，进行初始化事件，进行数据的观测，可以看到在created的时候数据已经和data属性进行绑定（放在data中的属性当值发生改变的同时，视图也会改变）。~注意看下：此时还是没有el选项~ 2、created钩子函数和beforeMount间的生命周期 首先会判断对象是否有el选项。如果有的话就继续向下编译，如果没有el选项，则停止编译，也就意味着停止了生命周期，直到在该vue实例上调用vm.$mount(el)。template参数对生命周期的影响：（1）如果vue实例对象中有template参数选项，则将其作为模板编译成render函数。（2）如果没有template选项，则将外部HTML作为模板编译。（3）可以看到template中的模板优先级要高于outer HTML的优先级。在vue对象中还有一个render函数，它是以createElement作为参数，然后做渲染操作，而且我们可以直接嵌入JSX.123456new Vue(&#123; el: &apos;#app&apos;, render: function(createElement) &#123; return createElement(&apos;h1&apos;, &apos;this is createElement&apos;) &#125;&#125;) 综合排名优先级：render函数选项 &gt; template选项 &gt; outer HTML. 3、beforeMount和mounted 钩子函数间的生命周期此时是给vue实例对象添加$el成员，并且替换掉挂在的DOM元素。 4、mounted在mounted之前h1中还是通过进行占位的，因为此时还有挂在到页面上，还是JavaScript中的虚拟DOM形式存在的。在mounted之后可以看到h1中的内容发生了变化。 5、beforeUpdate钩子函数和updated钩子函数间的生命周期当vue发现data中的数据发生了改变，会触发对应组件的重新渲染，先后调用beforeUpdate和updated钩子函数。在beforeUpdate,可以监听到data的变化但是view层没有被重新渲染，view层的数据没有变化。等到updated的时候 view层才被重新渲染，数据更新。]]></content>
       <tags>
         <tag>Vue.js</tag>
