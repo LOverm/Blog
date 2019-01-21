@@ -111,7 +111,65 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/blog/2019/01/20/cjr3qs6pr000b126p201adcxk/">实现基于JWT的Token登录验证功能</a>  
+		<a class="article-title" href="/blog/2019/01/21/cjr60r9eu0005hn6pul4rkvm2/">JavaScript——原型与原型链</a>  
+	       
+		 
+
+		<div class="article-meta">
+			<time>Jan 21, 2019</time>
+			
+				<span class="iconfont icon-star"></span>
+				            
+						<a class="article-tag" href="/blog/tags/JavaScript原理/">JavaScript原理</a>           
+				
+			
+		</div>
+	</div>
+
+
+	
+
+    
+	<div class="typo article-excerpt">	
+		 
+			<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>在 JavaScript 中构造函数和 Java 中的函数一样也可以创建对象实例。<br>例如下面的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line">&#125;</span><br><span class="line">var person = new Person();</span><br><span class="line">person.name = &apos;myname&apos;;</span><br></pre></td></tr></table></figure>
+<p>Person 是一个构造函数，我们使用 new 创建了一个实例对象 person。</p>
+<h2 id="prototype"><a href="#prototype" class="headerlink" title="prototype"></a>prototype</h2><p>每一<strong>函数</strong>都有一个 prototype 属性，这个 prototype 属性指向一个对象，这个对象正是调用该构造函数而创建的实例的原型，也就是 person 的原型。</p>
+<ul>
+<li>什么是原型：<br>每一个 JavaScript 对象(null 除外)在创建的时候就会与之关联另一个对象，这个对象就是我们所说的原型，每一个对象都会从原型”继承”属性。<br>那么 person 的原型该如何表示呢？</li>
+</ul>
+<h2 id="proto"><a href="#proto" class="headerlink" title="proto"></a><strong>proto</strong></h2><p>这是每一个 JavaScript 对象(除了 null )都具有的一个属性，叫<code>__proto__</code>，这个属性会指向该对象的原型。<br>在浏览器控制台中输入如下的代码可以证明这一点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">var person = new Person();</span><br><span class="line">console.log(person.__proto__ === Person.prototype); // true</span><br></pre></td></tr></table></figure>
+<p>由此可以知道，构造函数和实例可以指向原型，那么原型是否有属性指向构造函数和实例呢？</p>
+<h2 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h2><p>指向实例倒是没有，因为一个构造函数可以生成多个实例，但是原型指向构造函数倒是有的，这就要讲到第三个属性：constructor，每个原型都有一个 constructor 属性指向关联的构造函数。<br>在浏览器中控制台输入如下代码可以证明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Person() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">console.log(Person === Person.prototype.constructor); // true</span><br></pre></td></tr></table></figure>
+<h2 id="实例和原型"><a href="#实例和原型" class="headerlink" title="实例和原型"></a>实例和原型</h2><p>当读取实例的属性时，如果找不到，就会查找与对象关联的原型中的属性，如果还查不到，就去找原型的原型，一直找到最顶层为止。<br>形象一点描述，就是儿子的属性里找不到，就到爸爸的属性里找，爸爸的属性里找不到就到爸爸的爸爸的属性里去找……以此类推。知道找到原型的原型，那原型的原型又是什么呢？</p>
+<h2 id="原型的原型"><a href="#原型的原型" class="headerlink" title="原型的原型"></a>原型的原型</h2><p>在前面，我们已经讲了原型也是一个对象，既然是对象，我们就可以用最原始的方式创建它，那就是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var obj = new Object();</span><br><span class="line">obj.name = &apos;myname&apos;</span><br><span class="line">console.log(obj.name) // myname</span><br></pre></td></tr></table></figure>
+<p>其实原型对象就是通过 Object 构造函数生成的。</p>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>那 Object.prototype 的原型呢？<br>答案是：null，我们可以尝试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(Object.prototype.__proto__ === null) // true</span><br></pre></td></tr></table></figure>
+<p>null 表示没有对象，即该处不应该有值。<br>所以 <code>Object.prototype.__proto__</code>的值为 null 跟 Object.prototype 没有原型，其实表达了一个意思。<br>所以查找属性的时候查到 Object.prototype 就可以停止查找了。<br>盗用一下<a href="https://github.com/mqyqingfeng/Blog/issues/2" target="_blank" rel="noopener">伢羽大大博客</a>上的图片，关系图如下：<br><img src="/blog/2019/01/21/cjr60r9eu0005hn6pul4rkvm2/关系图.jpg"><br>图中由相互关联的原型组成的链状结构就是原型链，也就是蓝色的这条线。</p>
+
+		  	  
+	</div>
+
+	<div class="article-bottom">
+		<a class="article-readmore" href="/blog/2019/01/21/cjr60r9eu0005hn6pul4rkvm2/">阅读更多</a> 	
+	</div>	
+    
+</article>     
+     	
+    	  	
+  		
+    			
+
+<article class="article">		
+	   
+	<div class="article-header">
+	    
+		<a class="article-title" href="/blog/2019/01/20/cjr60r9fd000chn6p5tyqwk1g/">实现基于JWT的Token登录验证功能</a>  
 	       
 		 
 
@@ -137,7 +195,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/20/cjr3qs6pr000b126p201adcxk/">阅读更多</a> 	
+		<a class="article-readmore" href="/blog/2019/01/20/cjr60r9fd000chn6p5tyqwk1g/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -150,7 +208,7 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/blog/2019/01/09/cjr3qs6q3000j126p2jsx906j/">操作系统——虚拟存储器</a>  
+		<a class="article-title" href="/blog/2019/01/09/cjr60r9fh000khn6pvs1vjchh/">操作系统——虚拟存储器</a>  
 	       
 		 
 
@@ -176,7 +234,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/09/cjr3qs6q3000j126p2jsx906j/">阅读更多</a> 	
+		<a class="article-readmore" href="/blog/2019/01/09/cjr60r9fh000khn6pvs1vjchh/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -189,7 +247,7 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/blog/2019/01/09/cjr3qs6q1000g126pnds3gjgc/">操作系统——存储器管理</a>  
+		<a class="article-title" href="/blog/2019/01/09/cjr60r9fg000ihn6pl6nqt3gy/">操作系统——存储器管理</a>  
 	       
 		 
 
@@ -210,12 +268,12 @@
     
 	<div class="typo article-excerpt">	
 		
-			<h2 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h2><p>多级存储器结构<br><img src="/blog/2019/01/09/cjr3qs6q1000g126pnds3gjgc/多级1.jpg"></p>
+			<h2 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h2><p>多级存储器结构<br><img src="/blog/2019/01/09/cjr60r9fg000ihn6pl6nqt3gy/多级1.jpg"></p>
 		  	  
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/09/cjr3qs6q1000g126pnds3gjgc/">阅读更多</a> 	
+		<a class="article-readmore" href="/blog/2019/01/09/cjr60r9fg000ihn6pl6nqt3gy/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -228,7 +286,7 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/blog/2019/01/09/cjr3qs6q0000e126pkagzlivd/">操作系统——处理机调度与死锁</a>  
+		<a class="article-title" href="/blog/2019/01/09/cjr60r9ff000ghn6ptxe0ssdk/">操作系统——处理机调度与死锁</a>  
 	       
 		 
 
@@ -249,12 +307,12 @@
     
 	<div class="typo article-excerpt">	
 		
-			<h2 id="处理机调度的层次"><a href="#处理机调度的层次" class="headerlink" title="处理机调度的层次"></a>处理机调度的层次</h2><img src="/blog/2019/01/09/cjr3qs6q0000e126pkagzlivd/三级调度模型.jpg">
+			<h2 id="处理机调度的层次"><a href="#处理机调度的层次" class="headerlink" title="处理机调度的层次"></a>处理机调度的层次</h2><img src="/blog/2019/01/09/cjr60r9ff000ghn6ptxe0ssdk/三级调度模型.jpg">
 		  	  
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/09/cjr3qs6q0000e126pkagzlivd/">阅读更多</a> 	
+		<a class="article-readmore" href="/blog/2019/01/09/cjr60r9ff000ghn6ptxe0ssdk/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -267,7 +325,7 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/blog/2019/01/09/cjr3qs6qt001b126pd6swnr91/">操作系统——进程管理</a>  
+		<a class="article-title" href="/blog/2019/01/09/cjr60r9g9001fhn6poobp1g41/">操作系统——进程管理</a>  
 	       
 		 
 
@@ -295,7 +353,7 @@
 	</li></ul></div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/09/cjr3qs6qt001b126pd6swnr91/">阅读更多</a> 	
+		<a class="article-readmore" href="/blog/2019/01/09/cjr60r9g9001fhn6poobp1g41/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -308,7 +366,7 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/blog/2019/01/09/cjr3qs6qs0019126prc3hwlv2/">操作系统——引论</a>  
+		<a class="article-title" href="/blog/2019/01/09/cjr60r9g8001dhn6pz8jjf74t/">操作系统——引论</a>  
 	       
 		 
 
@@ -338,7 +396,7 @@
 	</li></ul></div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/09/cjr3qs6qs0019126prc3hwlv2/">阅读更多</a> 	
+		<a class="article-readmore" href="/blog/2019/01/09/cjr60r9g8001dhn6pz8jjf74t/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -351,7 +409,7 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/blog/2019/01/06/cjr3qs6qv001f126pmk0dupt0/">计算机组成原理——中央处理器</a>  
+		<a class="article-title" href="/blog/2019/01/06/cjr60r9gb001hhn6paxscbynq/">计算机组成原理——中央处理器</a>  
 	       
 		 
 
@@ -378,7 +436,7 @@
 	</div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/06/cjr3qs6qv001f126pmk0dupt0/">阅读更多</a> 	
+		<a class="article-readmore" href="/blog/2019/01/06/cjr60r9gb001hhn6paxscbynq/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -391,7 +449,7 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/blog/2019/01/06/cjr3qs6q6000p126pyeefmisz/">计算机组成原理——指令系统</a>  
+		<a class="article-title" href="/blog/2019/01/06/cjr60r9fj000ohn6pld0mu5hn/">计算机组成原理——指令系统</a>  
 	       
 		 
 
@@ -422,7 +480,7 @@
 	</li></ul></div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/06/cjr3qs6q6000p126pyeefmisz/">阅读更多</a> 	
+		<a class="article-readmore" href="/blog/2019/01/06/cjr60r9fj000ohn6pld0mu5hn/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -435,7 +493,7 @@
 	   
 	<div class="article-header">
 	    
-		<a class="article-title" href="/blog/2019/01/04/cjr3qs6qu001d126pcdeh5bj3/">计算机组成原理——存储器及存储系统</a>  
+		<a class="article-title" href="/blog/2019/01/04/cjr60r9gc001jhn6ptkw63jxa/">计算机组成原理——存储器及存储系统</a>  
 	       
 		 
 
@@ -463,51 +521,7 @@
 	</li></ol></div>
 
 	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/04/cjr3qs6qu001d126pcdeh5bj3/">阅读更多</a> 	
-	</div>	
-    
-</article>     
-     	
-    	  	
-  		
-    			
-
-<article class="article">		
-	   
-	<div class="article-header">
-	    
-		<a class="article-title" href="/blog/2019/01/04/cjr3qs6q7000q126pu4uasejj/">计算机组成原理——运算方法与运算器</a>  
-	       
-		 
-
-		<div class="article-meta">
-			<time>Jan 04, 2019</time>
-			
-				<span class="iconfont icon-star"></span>
-				            
-						<a class="article-tag" href="/blog/tags/计算机组成原理/">计算机组成原理</a>           
-				
-			
-		</div>
-	</div>
-
-
-	
-
-    
-	<div class="typo article-excerpt">	
-		
-			<h2 id="数值数据的表示"><a href="#数值数据的表示" class="headerlink" title="数值数据的表示"></a>数值数据的表示</h2><ul>
-<li>计算机中的数据表示，包括定点数、浮点数、字符、十进制数的表示方法 ;</li>
-<li>原码、补码、反码、移码等码制之间的关系以及各码制之间真值数的转换；</li>
-<li><strong>原码求补码的方法</strong>：<br>正数，不变，即原码=补码<br>负数，符号位不变，数值为取反并加 1</li>
-<li>补码中零只有一个：0.0000000 补码 1.0000000 表示负 1</li>
-</ul>
-		  	  
-	</div>
-
-	<div class="article-bottom">
-		<a class="article-readmore" href="/blog/2019/01/04/cjr3qs6q7000q126pu4uasejj/">阅读更多</a> 	
+		<a class="article-readmore" href="/blog/2019/01/04/cjr60r9gc001jhn6ptkw63jxa/">阅读更多</a> 	
 	</div>	
     
 </article>     
@@ -553,7 +567,7 @@
      <div class="mobile-menu">      
 
       
-      <img class="mobile-menu-icon" src="/images/favicon.png">   
+      <img class="mobile-menu-icon lazyload" src="/blog/images/placeholder.png" data-src="/images/favicon.png">   
       
 
          
