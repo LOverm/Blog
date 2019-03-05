@@ -89,7 +89,7 @@
      
     <i class="iconfont icon-words"></i>
     <span>
-      1678
+      1679
     </span>
     
 
@@ -115,6 +115,7 @@
 <li>百度和谷歌也会优先收录 HTTPS 站点哦～</li>
 </ul>
 <p>看到这里我不禁想起来，我每次打开自己的站点时候都会看到地址栏旁边有个不安全的标志，看着可是着实让人难受，不如来搞个 HTTPS 吧！</p>
+<a id="more"></a>
 <h2 id="准备-SSL-证书"><a href="#准备-SSL-证书" class="headerlink" title="准备 SSL 证书"></a>准备 SSL 证书</h2><p>我购买的是阿里云的服务器，通过谷歌了解到阿里云是提供免费的 SSL 证书的，在如下的界面购买即可<br><img src="http://ww1.sinaimg.cn/large/005ZR24Xly1g0s3csm5z3j31jg0y2ti7.jpg" alt=""></p>
 <h2 id="配置-Apache-支持-HTTPS"><a href="#配置-Apache-支持-HTTPS" class="headerlink" title="配置 Apache 支持 HTTPS"></a>配置 Apache 支持 HTTPS</h2><p>前面一顿操作，将获得的证书文件下载到了自己的电脑上<br><img src="http://ww1.sinaimg.cn/large/005ZR24Xly1g0s3i2fsr1j316i0o4dpl.jpg" alt=""><br>下面开始重头戏，也是踩了不少坑的地方<br>也放一下<a href="https://help.aliyun.com/document_detail/98727.html?spm=a2c4g.11186623.4.4.5b274c07Rzd4SE" target="_blank" rel="noopener">阿里云官方的配置文档</a><br>然而我们自己安装的 Apache 目录和官方的是不一样，许多配置文件都分散到了各个文件中。</p>
 <h3 id="开启-Ubuntu-的-OpenSSL-使-Apache-加载-SSL-模块"><a href="#开启-Ubuntu-的-OpenSSL-使-Apache-加载-SSL-模块" class="headerlink" title="开启 Ubuntu 的 OpenSSL 使 Apache 加载 SSL 模块"></a>开启 Ubuntu 的 OpenSSL 使 Apache 加载 SSL 模块</h3><p>使用命令<code>sudo a2enmod ssl</code>加载 Apache 的 SSL 模块。Apache 加载 SSL 模块后，会在/etc/apache2/sites-available 下生成 default-ssl.conf 文件，我们在终端使用 sudo 权限，通过 vi 编辑器打开。<br><img src="http://ww1.sinaimg.cn/large/005ZR24Xly1g0s6kvj9t7j314610yjzr.jpg" alt=""><br>这个文件需要做以下修改：</p>
