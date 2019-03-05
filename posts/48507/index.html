@@ -89,7 +89,7 @@
      
     <i class="iconfont icon-words"></i>
     <span>
-      1608
+      1648
     </span>
     
 
@@ -106,7 +106,47 @@
 		
 
 			
-					<h2 id="一、盒模型"><a href="#一、盒模型" class="headerlink" title="一、盒模型"></a>一、盒模型</h2><ol><li>ie 盒模型算上 border、padding 及自身（不算 margin），标准的只算上自身窗体的大小 css 设置方法如下：</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/* 标准模型 */</span><br><span class="line">box-sizing:content-box;</span><br><span class="line"> /*IE模型*/</span><br><span class="line">box-sizing:border-box;</span><br></pre></td></tr></table></figure><a id="more"></a><ol start="2"><li>margin、border、padding、content 由外到里</li><li>最常用的获得宽高的方式<code>dom.offsetWidth/offsetHeight</code></li><li>各种获得宽高的方式<ul><li>获取屏幕的高度和宽度（屏幕分辨率）：window.screen.height/width</li><li>获取屏幕工作区域的高度和宽度（去掉状态栏）window.screen.availHeight/availWidth</li><li>网页全文的高度和宽度：document.body.scrollHeight/Width</li><li>滚动条卷上去的高度和向右卷的宽度：document.body.scrollTop/scrollLeft</li><li>网页可见区域的高度和宽度（不加边线）：document.body.clientHeight/clientWidth</li><li>网页可见区域的高度和宽度（加边线）：document.body.offsetHeight/offsetWidth</li></ul></li></ol><h2 id="二、居中方式"><a href="#二、居中方式" class="headerlink" title="二、居中方式"></a>二、居中方式</h2><ol><li>水平居中<br>内联元素：inline, 内联块 inline-block, 内联表 inline-table, inline-flex 元素及 img,span,button 等<br><code>text-align:center;</code><br>不定宽块元素居中：<br><code>margin:0 auto;//且需要设置父级宽度</code><br>通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left: -50% 来实现水平居中。</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.wrap&#123;</span><br><span class="line">    float:left;</span><br><span class="line">    position:relative;</span><br><span class="line">    left:50%;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br><span class="line">.wrap-center&#123;</span><br><span class="line">    left:-50%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="2"><li>垂直居中<br>单行内联(inline-)元素垂直居中 通过设置内联元素的高度(height)和行高(line-height)相等，从而使元素垂直居中。</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">height: 120px;</span><br><span class="line">line-height: 120px;</span><br></pre></td></tr></table></figure><p>利用表布局</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">    display: table;</span><br><span class="line">&#125;</span><br><span class="line">.children &#123;</span><br><span class="line">    display: table-cell;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>flex 布局</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.center-flex &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;//上下排列</span><br><span class="line">    justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>绝对布局方式<br>已知高度</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 50%;</span><br><span class="line">  height: 100px;</span><br><span class="line">  margin-top: -50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>未知高度</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 50%;</span><br><span class="line">    transform: translateY(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="3"><li>垂直水平居中<br>flex 方式</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    justify-content: center;</span><br><span class="line">    align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>grid 方式</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">  height: 140px;</span><br><span class="line">  display: grid;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">  margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  	
+					<h2 id="一、盒模型"><a href="#一、盒模型" class="headerlink" title="一、盒模型"></a>一、盒模型</h2><ol>
+<li>ie 盒模型算上 border、padding 及自身（不算 margin），标准的只算上自身窗体的大小 css 设置方法如下：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/* 标准模型 */</span><br><span class="line">box-sizing:content-box;</span><br><span class="line"> /*IE模型*/</span><br><span class="line">box-sizing:border-box;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ol start="2">
+<li>margin、border、padding、content 由外到里</li>
+<li>最常用的获得宽高的方式<code>dom.offsetWidth/offsetHeight</code></li>
+<li>各种获得宽高的方式<ul>
+<li>获取屏幕的高度和宽度（屏幕分辨率）：window.screen.height/width</li>
+<li>获取屏幕工作区域的高度和宽度（去掉状态栏）window.screen.availHeight/availWidth</li>
+<li>网页全文的高度和宽度：document.body.scrollHeight/Width</li>
+<li>滚动条卷上去的高度和向右卷的宽度：document.body.scrollTop/scrollLeft</li>
+<li>网页可见区域的高度和宽度（不加边线）：document.body.clientHeight/clientWidth</li>
+<li>网页可见区域的高度和宽度（加边线）：document.body.offsetHeight/offsetWidth</li>
+</ul>
+</li>
+</ol>
+<h2 id="二、居中方式"><a href="#二、居中方式" class="headerlink" title="二、居中方式"></a>二、居中方式</h2><ol>
+<li>水平居中<br>内联元素：inline, 内联块 inline-block, 内联表 inline-table, inline-flex 元素及 img,span,button 等<br><code>text-align:center;</code><br>不定宽块元素居中：<br><code>margin:0 auto;//且需要设置父级宽度</code><br>通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left: -50% 来实现水平居中。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.wrap&#123;</span><br><span class="line">    float:left;</span><br><span class="line">    position:relative;</span><br><span class="line">    left:50%;</span><br><span class="line">    clear:both;</span><br><span class="line">&#125;</span><br><span class="line">.wrap-center&#123;</span><br><span class="line">    left:-50%;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>垂直居中<br>单行内联(inline-)元素垂直居中 通过设置内联元素的高度(height)和行高(line-height)相等，从而使元素垂直居中。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">height: 120px;</span><br><span class="line">line-height: 120px;</span><br></pre></td></tr></table></figure>
+<p>利用表布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.father &#123;</span><br><span class="line">    display: table;</span><br><span class="line">&#125;</span><br><span class="line">.children &#123;</span><br><span class="line">    display: table-cell;</span><br><span class="line">    vertical-align: middle;</span><br><span class="line">    text-align: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>flex 布局</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.center-flex &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    flex-direction: column;//上下排列</span><br><span class="line">    justify-content: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>绝对布局方式<br>已知高度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: 50%;</span><br><span class="line">  height: 100px;</span><br><span class="line">  margin-top: -50px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>未知高度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    position: relative;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">    position: absolute;</span><br><span class="line">    top: 50%;</span><br><span class="line">    transform: translateY(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>垂直水平居中<br>flex 方式</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    justify-content: center;</span><br><span class="line">    align-items: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>grid 方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.parent &#123;</span><br><span class="line">  height: 140px;</span><br><span class="line">  display: grid;</span><br><span class="line">&#125;</span><br><span class="line">.child &#123;</span><br><span class="line">  margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  	
 					
 	  </div>     
 	  
@@ -232,7 +272,7 @@
 	<div class="toc-container">
 			<div class="toc-sidebar">
 			<p class="toc-title">
-				CONTENT
+				目錄
 			</p>
 			<div class="toc-list">
 				<ol class="toc-inner"><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#一、盒模型"><span class="toc-inner-text">一、盒模型</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#二、居中方式"><span class="toc-inner-text">二、居中方式</span></a></li></ol>
@@ -266,19 +306,19 @@
   <img class="mobile-menu-icon" src="/blog/images/favicon.png">
     
 
-  <a class="mobile-menu-link" href="/blog/">首页
+  <a class="mobile-menu-link" href="/blog/">首頁
   </a>
     
 
-  <a class="mobile-menu-link" href="/blog/archives">归档
+  <a class="mobile-menu-link" href="/blog/archives">歸檔
   </a>
     
 
-  <a class="mobile-menu-link" href="/blog/tags">标签
+  <a class="mobile-menu-link" href="/blog/tags">標籤
   </a>
     
 
-  <a class="mobile-menu-link" href="/blog/about">关于
+  <a class="mobile-menu-link" href="/blog/about">關於
   </a>
     
 
