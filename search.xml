@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[（面经）腾讯一面]]></title>
+    <url>%2Fblog%2Fposts%2F37539%2F</url>
+    <content type="text"><![CDATA[电话来了！前天下午投了腾讯的简历，这两天等电话等得我焦急的啊！今天下午正在上就业指导，突然收到了广东深圳的电话，接听之后果然是腾讯的面试官，然后约了 3 点半的面试。好了不多说，上面筋！ 面试开始！面试大概的流程就是先自我介绍，然后介绍项目，面试官会根据你项目中所使用的技术来问你问题，几个问题大概如下，也记得不是很清楚了。 Vue 双向绑定原理，如何实现 MVVM 看 Vue 源码的感受，有什么让你感受最深的地方 ES6 的几个特性 在 ES5 中如何实现 class 的继承（最遗憾的地方啊！！寄生组合继承都没有讲就 pass 了） 跨域的几种方式 在项目中运用到的新技术 模块化（CommonJS、ES6 Module、AMD、CMD） HTTPS 的原理，TCP 三次握手 算法题：TopK 问题（自我感觉答的不好） 感受面试官问的很多问题的发散式的，需要自己尽量往深了讲。最后问面试官对我有什么学习上的建议，面试官说”你简历的技术点都符合现在公司的技术方向，广度是有了，但是深度还需要挖掘。“继承那个点没有展开说出来是我这次面试最大的遗憾啊！！！！！！还是需要好好学习！算法是基本功！！对了，我所面试部门是平台与内容事业群 PCG 负责移动端和 PC 端 QQ 前端开发的组。]]></content>
+      <tags>
+        <tag>2019春招</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[将自己的站点升级成HTTPS的（疯狂踩坑）过程]]></title>
     <url>%2Fblog%2Fposts%2F45502%2F</url>
     <content type="text"><![CDATA[前言又是一个阴雨天没有课的下午@(￣-￣)@和舍友打完两把英雄联盟，又打开了掘金开始刷面经。（实习面试很慌啊！）看到HTTP 协议和 HTTPS 的区别： HTTPS 就是身披 SSL( Secure Socket Layer )外壳的 HTTP，运行于 SSL 上，SSL 运行于 TCP 之上，是添加了加密和认证机制的 HTTP。就是在 HTTP(应用层）和 TCP（传输层）之间添加了一层 SSL 协议。 HTTPS 默认运行在 443 端口，而 HTTP 默认运行在 80 端口。 HTTPS 由于需要证书的加密机制，所以安全性更高，但同时 CPU 和内存的消耗也更多。 HTTPS 使用共享密钥加密和公开密钥加密并用的混合加密机制 百度和谷歌也会优先收录 HTTPS 站点哦～ 看到这里我不禁想起来，我每次打开自己的站点时候都会看到地址栏旁边有个不安全的标志，看着可是着实让人难受，不如来搞个 HTTPS 吧！ 准备 SSL 证书我购买的是阿里云的服务器，通过谷歌了解到阿里云是提供免费的 SSL 证书的，在如下的界面购买即可 配置 Apache 支持 HTTPS前面一顿操作，将获得的证书文件下载到了自己的电脑上下面开始重头戏，也是踩了不少坑的地方也放一下阿里云官方的配置文档然而我们自己安装的 Apache 目录和官方的是不一样，许多配置文件都分散到了各个文件中。 开启 Ubuntu 的 OpenSSL 使 Apache 加载 SSL 模块使用命令sudo a2enmod ssl加载 Apache 的 SSL 模块。Apache 加载 SSL 模块后，会在/etc/apache2/sites-available 下生成 default-ssl.conf 文件，我们在终端使用 sudo 权限，通过 vi 编辑器打开。这个文件需要做以下修改： 第一个 VirtualHost 标签 改成 *:443 ServerName 换成自己的域名 SSLCertificateFile、SSLCertificateKeyFile、SSLCertificateChainFile 对应的分别是刚刚下载下来的三个文件。完成后:wq 退出然后需要把 default-ssl.conf 映射至/etc/apache2/sites-enabled 文件夹使用命令sudo ln -s /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-enabled/001-ssl.conf进行建立软链接操作。官方文档中 12345SSLProtocol all -SSLv2 -SSLv3# 添加SSL协议支持协议，去掉不安全的协议。SSLCipherSuite HIGH:!RC4:!MD5:!aNULL:!eNULL:!NULL:!DH:!EDH:!EXP:+MEDIUM# 使用此加密套件。SSLHonorCipherOrder on 在/etc/apache2/mods-available/ssl.conf中修改最后重新加载 Apache 配置文件：sudo /etc/init.d/apache2 force-reload重启 Apache 服务：sudo /etc/init.d/apache2 restart HTTP 重定向至 HTTPS使用命令：sudo a2enmod rewrite加载 Apache 的 rewrite 模块打开 /etc/apache2/apache2.conf修改如下代码 12345&lt;Directory /var/www/&gt; Options FollowSymLinks AllowOverride ALL Require all granted&lt;/Directory&gt; 然后进入你的网站根目录，使用命令 touch.htaccess 来创建.htaccess 文件修改如下： 123RewriteEngine onRewriteCond %&#123;HTTPS&#125; !=onRewriteRule ^(.*) https://%&#123;SERVER_NAME&#125;$1 [L,R] 然后重启服务器，测试我的博客网站咯～嘻嘻，大功告成！]]></content>
