@@ -89,7 +89,7 @@
      
     <i class="iconfont icon-words"></i>
     <span>
-      1349
+      1350
     </span>
     
 
@@ -106,7 +106,8 @@
 		
 
 			
-					<h2 id="究竟是什么效果呢？"><a href="#究竟是什么效果呢？" class="headerlink" title="究竟是什么效果呢？"></a>究竟是什么效果呢？</h2><p><img src="http://ww1.sinaimg.cn/large/005ZR24Xgy1g1pqee1md3g307d031e81.gif" alt=""><br>显而易见，这个效果就是在光标前面依次插入字母，每个字母的颜色随机。我们先提前写好一些颜色的样式，color0….16，然后使用随机数使用就可以了。<br>可以在 <a href="https://codepen.io/KeenKing/pen/vMNxJd" target="_blank" rel="noopener">CodeOpen</a> 上直接查看</p>
+					<h2 id="究竟是什么效果呢？"><a href="#究竟是什么效果呢？" class="headerlink" title="究竟是什么效果呢？"></a>究竟是什么效果呢？</h2><a id="more"></a>
+<p><img src="http://ww1.sinaimg.cn/large/005ZR24Xgy1g1pqee1md3g307d031e81.gif" alt=""><br>显而易见，这个效果就是在光标前面依次插入字母，每个字母的颜色随机。我们先提前写好一些颜色的样式，color0….16，然后使用随机数使用就可以了。<br>可以在 <a href="https://codepen.io/KeenKing/pen/vMNxJd" target="_blank" rel="noopener">CodeOpen</a> 上直接查看</p>
 <h2 id="DOM-结构"><a href="#DOM-结构" class="headerlink" title="DOM 结构"></a>DOM 结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;content&quot;&gt;</span><br><span class="line">  &lt;span id=&quot;jsblink&quot; class=&quot;blink&quot;&gt;|&lt;/span&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p>很简单的一个 dom 结构，id 为 jsblink 的 span 标签是一个闪动的光标<br>使用 css3 动画实现，具体代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.blink &#123;</span><br><span class="line">  animation: blink 1s infinite steps(1, start);</span><br><span class="line">  font-size: 30px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@keyframes blink &#123;</span><br><span class="line">  0%,</span><br><span class="line">  100% &#123;</span><br><span class="line">    color: #fff;</span><br><span class="line">  &#125;</span><br><span class="line">  50% &#123;</span><br><span class="line">    color: #000;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
