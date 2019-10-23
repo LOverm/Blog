@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   
   
-  <title>  面试常问的操作系统知识 |   KeenKing的个人博客 </title>
+  <title>  React Fiber初探 |   KeenKing的个人博客 </title>
 
  
   
@@ -82,18 +82,18 @@
   
 	<div class="post-header">
   <p class="post-title">
-    面试常问的操作系统知识
+    React Fiber初探
   </p>
 
   <div class="meta-info">
     <span>
-      8月 25, 2019
+      10月 23, 2019
     </span>
 
      
     <i class="iconfont icon-words"></i>
     <span>
-      532
+      1527
     </span>
     
 
@@ -110,31 +110,29 @@
 		
 
 			
-					<h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程是具有独立功能的程序在一个数据集合上运行的过程，它是系统进行资源分配和调度的一个独立单位。系统利用进程控制块来管理和控制进程</p>
-<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><p>线程是程序中的一个执行流，每个线程都有自己的专有寄存器(栈指针、程序计数器等)，但代码区是共享的，即不同的线程可以执行同样的函数。</p>
-<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p>多线程是指程序中包含多个执行流，即在一个程序中可以同时运行多个不同的线程来执行不同的任务，<br>也就是说允许单个程序创建多个并行执行的线程来完成各自的任务。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>可以提高 CPU 的利用率。在多线程程序中，一个线程必须等待的时候，CPU 可以运行其它的线程而不是等待，这样就大大提高了程序的效率。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
-<li>线程也是程序，所以线程需要占用内存，线程越多占用内存也越多；</li>
-<li>多线程需要协调和管理，所以需要 CPU 时间跟踪线程；</li>
-<li>线程之间对共享资源的访问会相互影响，必须解决竞用共享资源的问题；</li>
-<li>线程太多会导致控制太复杂，最终可能造成很多 Bug；</li>
+					<h2 id="Fiber的使命"><a href="#Fiber的使命" class="headerlink" title="Fiber的使命"></a>Fiber的使命</h2><p>我们都知道JavaScript是单线程的，同时只能有一个任务运行。然而浏览器除了执行JavaScript还有很多事情要做，比如事件处理、界面渲染和绘制、网络资源的加载和处理等等。所以当一个JavaScript任务长时间占据CPU时，后面什么事情就都做不了了，这时页面就会非常的卡顿，用户的体验会很差。<br><a id="more"></a><br><strong>在React中渲染时会递归比对VirtualDOM树，找出需要变动的节点，然后同步更新它们, 一气呵成。这个过程 React 称为 Reconcilation</strong>。在这个过程中，React会长时间占用浏览器的资源，导致用户触发的事件得不到响应和掉帧。React的Fiber架构就是为了解决这个问题而生。</p>
+<p><strong>为了给用户制造一种应用很快的’假象’，我们不能让一个程序长期霸占着资源. 你可以将浏览器的渲染、布局、绘制、资源加载(例如HTML解析)、事件响应、脚本执行视作操作系统的’进程’，我们需要通过某些调度策略合理地分配CPU资源，从而提高浏览器的用户响应速率, 同时兼顾任务执行效率</strong>。</p>
+<p>所以 React 通过Fiber 架构，让自己的Reconcilation 过程变成可被<strong>中断</strong>。 适时地让出CPU执行权，让浏览器能够及时地响应用户的交互。</p>
+<h2 id="何为Fiber"><a href="#何为Fiber" class="headerlink" title="何为Fiber"></a>何为Fiber</h2><p>fiber在英文中的意思是“纤维”。在React中，它更像是一种数据结构或者执行单元，每当执行完一个执行单元，React就会检查现在还剩下多少时间，如果没有时间就把控制权交出去。<br>Chrome浏览器提供了一个接口——requestIdleCallback</p>
+<h3 id="requestIdleCallback"><a href="#requestIdleCallback" class="headerlink" title="requestIdleCallback"></a>requestIdleCallback</h3><p>页面是一帧一帧绘制出来的，当每秒绘制的帧数（FPS）达到 60 时，页面是流畅的，小于这个值时，用户会感觉到卡顿。<br>1s60帧，所以每一帧分到的时间是 1000/60 ≈ 16 ms。所以我们书写代码时力求不让一帧的工作量超过 16ms。<br><strong>浏览器在1帧的时间内需要完成如下的工作：</strong></p>
+<ul>
+<li>处理用户的交互</li>
+<li>JS 解析执行</li>
+<li>帧开始。窗口尺寸变更，页面滚去等的处理</li>
+<li>requestAnimationFrame</li>
+<li>布局</li>
+<li>绘制<br>上面六个步骤完成后没超过 16 ms，说明时间有富余，此时就会执行 requestIdleCallback 里注册的任务。此外如果浏览器每一帧都被安排满了，requestIdleCallback 注册的任务有可能永远不会执行。此时可通过设置 timeout 来保证执行。</li>
+</ul>
+<p><img src="http://ww1.sinaimg.cn/large/005ZR24Xgy1g888qqynzij30ss0gfwgv.jpg" alt="1.png"><br>目前 requestIdleCallback 目前只有Chrome支持。所以目前 React  <a href="https://github.com/facebook/react/blob/master/packages/scheduler/src/forks/SchedulerHostConfig.default.js" target="_blank" rel="noopener">自己实现了一个</a> 。它利用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MessageChannel" target="_blank" rel="noopener">MessageChannel</a>  模拟将回调延迟到绘制操作之后执行。</p>
+<h3 id="任务优先级"><a href="#任务优先级" class="headerlink" title="任务优先级"></a>任务优先级</h3><p>上面说了，为了避免任务被饿死，可以设置一个超时时间. <strong>这个超时时间不是死的，低优先级的可以慢慢等待, 高优先级的任务应该率先被执行</strong>. 目前 React 预定义了 5 个优先级：</p>
+<ol>
+<li>Immediate(-1) - 这个优先级的任务会同步执行, 或者说要马上执行且不能中断</li>
+<li>UserBlocking(250ms) 这些任务一般是用户交互的结果, 需要即时得到反馈</li>
+<li>Normal (5s) 应对哪些不需要立即感受到的任务，例如网络请求</li>
+<li>Low (10s) 这些任务可以放后，但是最终应该得到执行. 例如分析通知</li>
+<li>Idle (没有超时时间) 一些没有必要做的任务 (e.g. 比如隐藏的内容), 可能会被饿死</li>
 </ol>
-<h2 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h2><h3 id="线程相对于进程的优点："><a href="#线程相对于进程的优点：" class="headerlink" title="线程相对于进程的优点："></a>线程相对于进程的优点：</h3><ol>
-<li>开销小</li>
-<li>资源共享性好。</li>
-</ol>
-<h3 id="线程相对于进程的缺点："><a href="#线程相对于进程的缺点：" class="headerlink" title="线程相对于进程的缺点："></a>线程相对于进程的缺点：</h3><ol>
-<li>共享资源需要耗费一定的锁资源，同步相对复杂。</li>
-<li>一个线程崩溃可能导致整个进程崩溃，这个当然是自己的应用程序有问题</li>
-</ol>
-<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><ol>
-<li>管道</li>
-<li>消息队列</li>
-<li>信号量</li>
-<li>共享内存</li>
-</ol>
-<p>未完待续…..</p>
+<p>那么如果我们使用setState了来更新组件，这个待更新的任务会被放进更新队列中，然后通过requestIdleCallback 请求浏览器调度。如果当前余有时间，就会从更新队列循环弹出任务来执行，每执行完一个任务就会判断一下时间是否充足，如果充足就进行执行下一个执行单元，反之则停止执行，保存现场，等下一次有执行权时恢复。<br><img src="http://ww1.sinaimg.cn/large/005ZR24Xgy1g888ubh5pyj30qo0riglv.jpg" alt="2.png"></p>
   	
 					
 	  </div>     
@@ -202,7 +200,7 @@
 
         
           <i class="iconfont icon-tag"></i>     
-            <a class="tag-link" href="/blog/tags/操作系统/">操作系统</a>    
+            <a class="tag-link" href="/blog/tags/react/">react</a>    
         	
   </div>
 
@@ -211,22 +209,13 @@
 
 <nav class="post-footer-nav">
   
-    <div class="post-footer-link">
-      <a href="/blog/posts/35045/" id="post-nav-newer" class="post-nav-link-wrap">
-        <strong class="post-nav-caption">newer</strong>
-           
-          <a class="post-nav-title" href="/blog/posts/35045/">
-          React Fiber初探</a>
-      </a>
-    </div>
-  
   
     <div class="post-footer-link">
-      <a href="/blog/posts/44235/" id="post-nav-older" class="post-nav-link-wrap">
+      <a href="/blog/posts/17609/" id="post-nav-older" class="post-nav-link-wrap">
         <strong class="post-nav-caption">older</strong>
         
-          <a class="post-nav-title" href="/blog/posts/44235/">
-          浅析V8引擎垃圾回收机制</a>
+          <a class="post-nav-title" href="/blog/posts/17609/">
+          面试常问的操作系统知识</a>
       </a>
     </div>
   
@@ -264,7 +253,7 @@
 				CONTENT
 			</p>
 			<div class="toc-list">
-				<ol class="toc-inner"><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#进程"><span class="toc-inner-text">进程</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#线程"><span class="toc-inner-text">线程</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#多线程"><span class="toc-inner-text">多线程</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#优点"><span class="toc-inner-text">优点</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#缺点"><span class="toc-inner-text">缺点</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#进程和线程"><span class="toc-inner-text">进程和线程</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#线程相对于进程的优点："><span class="toc-inner-text">线程相对于进程的优点：</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#线程相对于进程的缺点："><span class="toc-inner-text">线程相对于进程的缺点：</span></a></li></ol></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#进程间通信"><span class="toc-inner-text">进程间通信</span></a></li></ol>
+				<ol class="toc-inner"><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#Fiber的使命"><span class="toc-inner-text">Fiber的使命</span></a></li><li class="toc-inner-item toc-inner-level-2"><a class="toc-inner-link" href="#何为Fiber"><span class="toc-inner-text">何为Fiber</span></a><ol class="toc-inner-child"><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#requestIdleCallback"><span class="toc-inner-text">requestIdleCallback</span></a></li><li class="toc-inner-item toc-inner-level-3"><a class="toc-inner-link" href="#任务优先级"><span class="toc-inner-text">任务优先级</span></a></li></ol></li></ol>
 			</div>
 		</div>
 	</div>
@@ -292,7 +281,7 @@
  
     <div class="mobile-menu">
   
-  <img class="mobile-menu-icon" src="/blog/images/favicon.png">
+  <img class="mobile-menu-icon lazyload" src="/blog/images/placeholder.png" data-src="/blog/images/favicon.png">
     
 
   <a class="mobile-menu-link" href="/blog/">首页
